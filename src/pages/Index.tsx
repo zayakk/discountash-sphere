@@ -66,24 +66,7 @@ const Index = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gray-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Join Our Newsletter</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter and be the first to know about new products and exclusive offers.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="px-4 py-2 rounded flex-grow"
-            />
-            <Button className="bg-shop-accent hover:bg-shop-accent/90">
-              Subscribe
-            </Button>
-          </div>
-        </div>
-      </section>
+      
 
       <Footer />
     </div>
