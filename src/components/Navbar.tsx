@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
@@ -23,17 +22,17 @@ const Navbar = () => {
     <nav className="bg-white shadow-sm sticky top-0 z-10">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Лого */}
           <Link to="/" className="text-2xl font-bold text-shop-primary">
             ShopNow
           </Link>
 
-          {/* Search Bar */}
+          {/* Хайлтын талбар */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 mx-10">
             <div className="relative w-full max-w-lg">
               <Input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Бүтээгдэхүүн хайх..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pr-10"
@@ -47,23 +46,23 @@ const Navbar = () => {
             </div>
           </form>
 
-          {/* Navigation Links */}
+          {/* Навигацийн холбоосууд */}
           <div className="flex items-center space-x-4">
             <Link to="/products" className="text-gray-600 hover:text-shop-primary">
-              Products
+              Бүтээгдэхүүнүүд
             </Link>
             
             <Link to="/deals" className="text-gray-600 hover:text-shop-primary">
-              Deals
+              Хямдрал
             </Link>
 
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
                 <div className="hidden md:block">
-                  <span className="text-gray-600">Hi, {user?.name}</span>
+                  <span className="text-gray-600">Сайн уу, {user?.name}</span>
                 </div>
                 <Button variant="ghost" onClick={logout}>
-                  Logout
+                  Гарах
                 </Button>
               </div>
             ) : (
@@ -71,11 +70,11 @@ const Navbar = () => {
                 <Link to="/login">
                   <Button variant="ghost" className="flex items-center">
                     <User className="h-4 w-4 mr-2" />
-                    <span className="hidden md:inline">Login</span>
+                    <span className="hidden md:inline">Нэвтрэх</span>
                   </Button>
                 </Link>
                 <Link to="/register">
-                  <Button variant="outline">Register</Button>
+                  <Button variant="outline">Бүртгүүлэх</Button>
                 </Link>
               </div>
             )}
