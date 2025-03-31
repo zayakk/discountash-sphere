@@ -4,72 +4,72 @@ import { Product } from "../context/CartContext";
 export const PRODUCTS: Product[] = [
   {
     id: 1,
-    name: "Wireless Headphones",
-    price: 79.99,
+    name: "Classic Denim Jacket",
+    price: 89.99,
     originalPrice: 129.99,
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    category: "Electronics",
-    description: "High-quality wireless headphones with noise cancellation and long battery life."
+    image: "https://images.unsplash.com/photo-1579975339713-a135d7a8e92a",
+    category: "Outerwear",
+    description: "Timeless blue denim jacket with button closure and two front pockets."
   },
   {
     id: 2,
-    name: "Smart Watch",
-    price: 149.99,
-    originalPrice: 199.99,
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=989&q=80",
-    category: "Electronics",
-    description: "Feature-rich smartwatch with health tracking, notifications, and water resistance."
+    name: "Floral Summer Dress",
+    price: 59.99,
+    originalPrice: 79.99,
+    image: "https://images.unsplash.com/photo-1464375264579-4f02aea4646b",
+    category: "Dresses",
+    description: "Light and breezy summer dress with a delicate floral print and adjustable waist."
   },
   {
     id: 3,
-    name: "Cotton T-Shirt",
-    price: 19.99,
-    image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-    category: "Clothing",
-    description: "Soft and comfortable 100% cotton t-shirt, perfect for everyday wear."
+    name: "Striped Cotton T-Shirt",
+    price: 24.99,
+    image: "https://images.unsplash.com/photo-1521572163130-d4f44c37b6c0",
+    category: "T-Shirts",
+    description: "Soft cotton t-shirt with classic horizontal stripes, perfect for casual wear."
   },
   {
     id: 4,
-    name: "Coffee Maker",
-    price: 89.99,
-    originalPrice: 109.99,
-    image: "https://images.unsplash.com/photo-1585657440475-abe3eab4c17d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-    category: "Home",
-    description: "Programmable coffee maker with timer and multiple brewing options."
+    name: "High-Waisted Jeans",
+    price: 79.99,
+    originalPrice: 99.99,
+    image: "https://images.unsplash.com/photo-1604272490375-3dfb69d3a6e9",
+    category: "Jeans",
+    description: "Modern high-waisted jeans with a slim fit and comfortable stretch fabric."
   },
   {
     id: 5,
-    name: "Running Shoes",
+    name: "Running Sneakers",
     price: 69.99,
     originalPrice: 89.99,
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    category: "Footwear",
-    description: "Lightweight and durable running shoes with cushioned soles for comfort."
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+    category: "Shoes",
+    description: "Lightweight and comfortable running shoes with cushioned soles."
   },
   {
     id: 6,
-    name: "Smartphone",
-    price: 599.99,
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80",
-    category: "Electronics",
-    description: "Latest smartphone with high-resolution camera and fast processor."
+    name: "Wool Blend Sweater",
+    price: 64.99,
+    image: "https://images.unsplash.com/photo-1593032465175-20eed5ece6b4",
+    category: "Sweaters",
+    description: "Warm and cozy wool blend sweater with a classic crew neck design."
   },
   {
     id: 7,
-    name: "Desk Lamp",
-    price: 34.99,
-    originalPrice: 49.99,
-    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-    category: "Home",
-    description: "Adjustable desk lamp with multiple brightness levels and color temperatures."
+    name: "Leather Ankle Boots",
+    price: 129.99,
+    originalPrice: 159.99,
+    image: "https://images.unsplash.com/photo-1535043431092-448c4ca78115",
+    category: "Shoes",
+    description: "Stylish genuine leather ankle boots with a comfortable low heel."
   },
   {
     id: 8,
-    name: "Backpack",
+    name: "Silk Printed Scarf",
     price: 45.99,
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+    image: "https://images.unsplash.com/photo-1611558109169-bb5cbe9d1aad",
     category: "Accessories",
-    description: "Durable backpack with multiple compartments, perfect for travel or daily use."
+    description: "Luxurious silk scarf with an elegant geometric print."
   }
 ];
 
@@ -96,3 +96,4 @@ export const searchProducts = (query: string): Product[] => {
 export const CATEGORIES = Array.from(
   new Set(PRODUCTS.map(product => product.category))
 );
+
