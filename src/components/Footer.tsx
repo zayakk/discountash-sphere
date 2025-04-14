@@ -66,7 +66,7 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-gray-800 mb-4">Холбоо барих</h3>
             <ul className="space-y-2 text-gray-600">
-              <li>Email: support@shopnow.com</li>
+              <li>Email: exam17@gmail.com</li>
               <li>Утас: 88304555</li>
               <li>Цагийн хуваарь: Даваа-Баасан, 9AM-5PM</li>
             </ul>

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -41,22 +40,22 @@ const Search = () => {
           <form onSubmit={handleSearch} className="flex gap-2">
             <Input
               type="text"
-              placeholder="Search products..."
+              placeholder="Бүтээгдэхүүн хайх..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"
             />
             <Button type="submit">
               <SearchIcon className="h-4 w-4 mr-2" />
-              Search
+              Хайх
             </Button>
           </form>
         </div>
         
         {query && (
           <div className="mb-6">
-            <h1 className="text-2xl font-bold mb-2">Search results for "{query}"</h1>
-            <p className="text-gray-500">{results.length} products found</p>
+            <h1 className="text-2xl font-bold mb-2">"{query}" хайлтын үр дүн</h1>
+            <p className="text-gray-500">{results.length} бүтээгдэхүүн олдлоо</p>
           </div>
         )}
         
@@ -69,12 +68,12 @@ const Search = () => {
         ) : (
           query && (
             <div className="text-center py-12">
-              <h2 className="text-xl font-medium mb-2">No products found</h2>
+              <h2 className="text-xl font-medium mb-2">Бүтээгдэхүүн олдсонгүй</h2>
               <p className="text-gray-500 mb-6">
-                We couldn't find any products matching "{query}". Try a different search term or browse our categories.
+                "{query}" хайлтаар тохирох бүтээгдэхүүн олдсонгүй. Та өөр хайлтын үг ашиглах эсвэл бүх бүтээгдэхүүнийг үзнэ үү.
               </p>
               <Button onClick={() => navigate("/products")}>
-                Browse All Products
+                Бүх бүтээгдэхүүнийг үзэх
               </Button>
             </div>
           )

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -16,28 +15,28 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  
+
   const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    
+
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("Нууц үг таарахгүй байна.");
       return;
     }
-    
+
     setIsLoading(true);
-    
+
     try {
       const success = await register(name, email, password);
       if (success) {
         navigate("/");
       }
     } catch (err) {
-      setError("Failed to create account. Please try again.");
+      setError("Бүртгэл амжилтгүй боллоо. Дахин оролдоно уу.");
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -47,16 +46,16 @@ const Register = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <div className="flex-1 flex items-center justify-center p-4 bg-gray-50">
         <Card className="w-full max-w-md">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold">Create an Account</CardTitle>
+            <CardTitle className="text-2xl font-bold">Бүртгүүлэх</CardTitle>
             <CardDescription>
-              Enter your information to create an account
+              Та дараах мэдээллийг бөглөж бүртгүүлнэ үү
             </CardDescription>
           </CardHeader>
-          
+
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               {error && (
@@ -64,75 +63,75 @@ const Register = () => {
                   {error}
                 </div>
               )}
-              
+
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="name">Бүтэн нэр</Label>
                 <Input
                   id="name"
-                  placeholder="Enter your full name"
+                  placeholder="Өөрийн бүтэн нэрийг оруулна уу"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
               </div>
-              
+
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">И-мэйл</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="И-мэйл хаягаа оруулна уу"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
-              
+
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Нууц үг</Label>
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Create a password"
+                  placeholder="Нууц үг үүсгэнэ үү"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
-              
+
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Label htmlFor="confirmPassword">Нууц үгээ давтах</Label>
                 <Input
                   id="confirmPassword"
                   type="password"
-                  placeholder="Confirm your password"
+                  placeholder="Нууц үгээ давтан оруулна уу"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                 />
               </div>
             </CardContent>
-            
+
             <CardFooter className="flex flex-col space-y-4">
               <Button 
                 className="w-full bg-shop-primary hover:bg-shop-primary/90" 
                 type="submit"
                 disabled={isLoading}
               >
-                {isLoading ? "Creating Account..." : "Register"}
+                {isLoading ? "Бүртгэл үүсгэж байна..." : "Бүртгүүлэх"}
               </Button>
-              
+
               <div className="text-center text-sm">
-                Already have an account?{" "}
+                Та бүртгэлтэй юу?{" "}
                 <Link to="/login" className="text-shop-primary hover:underline">
-                  Login
+                  Нэвтрэх
                 </Link>
               </div>
             </CardFooter>
           </form>
         </Card>
       </div>
-      
+
       <Footer />
     </div>
   );

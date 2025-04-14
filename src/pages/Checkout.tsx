@@ -22,7 +22,7 @@ const Checkout = () => {
     city: "",
     state: "",
     zipCode: "",
-    country: "US",
+    country: "..",
   });
   
   const [paymentMethod, setPaymentMethod] = useState("credit-card");
@@ -81,21 +81,21 @@ const Checkout = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <div className="container mx-auto px-4 py-8 flex-1">
-        <h1 className="text-3xl font-bold mb-8">Checkout</h1>
-        
+        <h1 className="text-3xl font-bold mb-8">Төлбөр хийх</h1>
+
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Checkout Form */}
+          {/* Захиалга хийх форм */} 
           <div className="lg:w-8/12">
             <form onSubmit={handleSubmit}>
-              {/* Shipping Address */}
+              {/* Хүргэлтийн хаяг */}
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-                <h2 className="text-xl font-bold mb-4">Shipping Address</h2>
-                
+                <h2 className="text-xl font-bold mb-4">Хаягийн мэдээлэл</h2>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="fullName">Full Name</Label>
+                    <Label htmlFor="fullName">Бүтэн нэр</Label>
                     <Input
                       id="fullName"
                       name="fullName"
@@ -104,9 +104,9 @@ const Checkout = () => {
                       required
                     />
                   </div>
-                  
+
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="address">Address</Label>
+                    <Label htmlFor="address">Гэрийн хаяг</Label>
                     <Input
                       id="address"
                       name="address"
@@ -115,9 +115,9 @@ const Checkout = () => {
                       required
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
-                    <Label htmlFor="city">City</Label>
+                    <Label htmlFor="city">Хот</Label>
                     <Input
                       id="city"
                       name="city"
@@ -126,9 +126,9 @@ const Checkout = () => {
                       required
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
-                    <Label htmlFor="state">State / Province</Label>
+                    <Label htmlFor="state">Аймаг / Муж</Label>
                     <Input
                       id="state"
                       name="state"
@@ -137,9 +137,9 @@ const Checkout = () => {
                       required
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
-                    <Label htmlFor="zipCode">ZIP / Postal Code</Label>
+                    <Label htmlFor="zipCode">Зип / Шуудангийн код</Label>
                     <Input
                       id="zipCode"
                       name="zipCode"
@@ -148,33 +148,37 @@ const Checkout = () => {
                       required
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
-                    <Label htmlFor="country">Country</Label>
+                    <Label htmlFor="country">Улс</Label>
                     <select
                       id="country"
                       name="country"
                       value={addressDetails.country}
-                      onChange={(e) => setAddressDetails(prev => ({
-                        ...prev,
-                        country: e.target.value
-                      }))}
+                      onChange={(e) =>
+                        setAddressDetails((prev) => ({
+                          ...prev,
+                          country: e.target.value,
+                        }))
+                      }
                       className="w-full border rounded-md px-3 py-2"
                       required
                     >
-                      <option value="US">United States</option>
-                      <option value="CA">Canada</option>
-                      <option value="UK">United Kingdom</option>
-                      <option value="AU">Australia</option>
+                      <option value="..">...</option>
+                      <option value="US">Монгол Улс</option>
+                      <option value="US">Америкийн Нэгдсэн Улс</option>
+                      <option value="CA">Хятад</option>
+                      <option value="UK">Солонгос</option>
+                      <option value="AU">Австрали</option>
                     </select>
                   </div>
                 </div>
               </div>
-              
-              {/* Payment Method */}
+
+              {/* Төлбөрийн хэлбэр */}
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-                <h2 className="text-xl font-bold mb-4">Payment Method</h2>
-                
+                <h2 className="text-xl font-bold mb-4">Төлбөрийн хэлбэр</h2>
+
                 <RadioGroup
                   value={paymentMethod}
                   onValueChange={setPaymentMethod}
@@ -182,95 +186,87 @@ const Checkout = () => {
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="credit-card" id="credit-card" />
-                    <Label htmlFor="credit-card">Credit / Debit Card</Label>
+                    <Label htmlFor="credit-card">Кредит / Дебит карт</Label>
                   </div>
-                  
-                  <div className="flex items-center space-x-2">
+
+                  {/* <div className="flex items-center space-x-2">
                     <RadioGroupItem value="paypal" id="paypal" />
                     <Label htmlFor="paypal">PayPal</Label>
-                  </div>
+                  </div> */}
                 </RadioGroup>
-                
+
                 {paymentMethod === "credit-card" && (
                   <div className="mt-4 space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="cardNumber">Card Number</Label>
+                      <Label htmlFor="cardNumber">Картын дугаар</Label>
                       <Input
                         id="cardNumber"
                         placeholder="1234 5678 9012 3456"
                         required
                       />
                     </div>
-                    
+
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="expiryDate">Expiry Date</Label>
-                        <Input
-                          id="expiryDate"
-                          placeholder="MM/YY"
-                          required
-                        />
+                        <Label htmlFor="expiryDate">Дуусах хугацаа</Label>
+                        <Input id="expiryDate" placeholder="MM/YY" required />
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="cvv">CVV</Label>
-                        <Input
-                          id="cvv"
-                          placeholder="123"
-                          required
-                        />
+                        <Input id="cvv" placeholder="123" required />
                       </div>
                     </div>
                   </div>
                 )}
               </div>
-              
+
               <Button
                 type="submit"
                 className="w-full bg-shop-primary hover:bg-shop-primary/90 h-12 text-lg"
                 disabled={isProcessing}
               >
-                {isProcessing ? "Processing..." : `Pay $${total.toFixed(2)}`}
+                {isProcessing ? "Төлбөр хийгдэж байна..." : `Төлөх $${total.toFixed(2)}`}
               </Button>
             </form>
           </div>
-          
-          {/* Order Summary */}
+
+          {/* Захиалгын хураангуй */}
           <div className="lg:w-4/12">
             <div className="bg-white rounded-lg shadow-sm p-6 sticky top-20">
-              <h2 className="text-xl font-bold mb-4">Order Summary</h2>
-              
+              <h2 className="text-xl font-bold mb-4">Захиалгын хураангуй</h2>
+
               <div className="space-y-4 mb-6">
                 <div className="divide-y">
                   {items.map((item) => (
                     <div key={item.product.id} className="py-3 flex justify-between">
                       <div>
                         <span className="font-medium">{item.product.name}</span>
-                        <div className="text-sm text-gray-500">Qty: {item.quantity}</div>
+                        <div className="text-sm text-gray-500">Тоо: {item.quantity}</div>
                       </div>
                       <span>${(item.product.price * item.quantity).toFixed(2)}</span>
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="border-t pt-4 space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-gray-600">Нийлбэр</span>
                     <span>${subtotal.toFixed(2)}</span>
                   </div>
-                  
+
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Shipping</span>
-                    <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                    <span className="text-gray-600">Хүргэлт</span>
+                    <span>{shipping === 0 ? "Үнэгүй" : `$${shipping.toFixed(2)}`}</span>
                   </div>
-                  
+
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Tax (7%)</span>
+                    <span className="text-gray-600">НӨАТ (7%)</span>
                     <span>${tax.toFixed(2)}</span>
                   </div>
-                  
+
                   <div className="border-t pt-4 flex justify-between font-bold">
-                    <span>Total</span>
+                    <span>Нийт дүн</span>
                     <span>${total.toFixed(2)}</span>
                   </div>
                 </div>
@@ -279,7 +275,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </div>
   );

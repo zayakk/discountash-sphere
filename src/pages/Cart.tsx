@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -16,36 +15,33 @@ const Cart = () => {
   const [couponCode, setCouponCode] = useState("");
   const [couponError, setCouponError] = useState("");
   const [discount, setDiscount] = useState(0);
-  
+
   const shipping = subtotal > 50 ? 0 : 5.99;
   const total = subtotal + shipping - discount;
 
   const handleApplyCoupon = () => {
     setCouponError("");
-    
-    // Demo coupon validation
     if (couponCode.toUpperCase() === "SUMMER20") {
       const discountAmount = subtotal * 0.2;
       setDiscount(discountAmount);
-      toast.success("Coupon applied successfully!");
+      toast.success("Купон амжилттай ашиглагдлаа!");
     } else {
-      setCouponError("Invalid coupon code");
+      setCouponError("Буруу купон код");
     }
   };
-  
+
   const handleCheckout = () => {
     if (!isAuthenticated) {
-      toast("Please log in to proceed with checkout", {
-        description: "You need to be logged in to complete your purchase.",
+      toast("Төлбөр хийхийн тулд нэвтэрнэ үү", {
+        description: "Та захиалга үргэлжлүүлэхийн тулд нэвтэрсэн байх шаардлагатай.",
         action: {
-          label: "Login",
-          onClick: () => navigate("/login")
-        }
+          label: "Нэвтрэх",
+          onClick: () => navigate("/login"),
+        },
       });
       return;
     }
-    
-    // Proceed to checkout
+
     navigate("/checkout");
   };
 
@@ -53,16 +49,16 @@ const Cart = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        
+
         <div className="flex-1 flex flex-col items-center justify-center p-4">
           <ShoppingBag className="h-16 w-16 text-gray-300 mb-4" />
-          <h1 className="text-2xl font-bold mb-2">Your cart is empty</h1>
-          <p className="text-gray-500 mb-6">Add some products to your cart and come back</p>
+          <h1 className="text-2xl font-bold mb-2">Таны сагс хоосон байна</h1>
+          <p className="text-gray-500 mb-6">Та бараа нэмээд дахин оролдоно уу</p>
           <Link to="/products">
-            <Button>Start Shopping</Button>
+            <Button>Дэлгүүр хэсэх</Button>
           </Link>
         </div>
-        
+
         <Footer />
       </div>
     );
@@ -71,21 +67,21 @@ const Cart = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <div className="container mx-auto px-4 py-8 flex-1">
-        <h1 className="text-3xl font-bold mb-8">Your Shopping Cart</h1>
-        
+        <h1 className="text-3xl font-bold mb-8">Таны сагс</h1>
+
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items */}
           <div className="lg:w-8/12">
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="hidden md:grid grid-cols-12 gap-4 p-4 bg-gray-50 text-sm font-medium text-gray-500">
-                <div className="col-span-6">Product</div>
-                <div className="col-span-2 text-center">Price</div>
-                <div className="col-span-2 text-center">Quantity</div>
-                <div className="col-span-2 text-center">Total</div>
+                <div className="col-span-6">Бүтээгдэхүүн</div>
+                <div className="col-span-2 text-center">Үнэ</div>
+                <div className="col-span-2 text-center">Тоо</div>
+                <div className="col-span-2 text-center">Нийт</div>
               </div>
-              
+
               <div className="divide-y">
                 {items.map((item) => (
                   <div key={item.product.id} className="p-4 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
@@ -108,19 +104,19 @@ const Cart = () => {
                             className="text-red-500 text-sm flex items-center mt-1 md:hidden"
                           >
                             <Trash2 className="h-3 w-3 mr-1" />
-                            Remove
+                            Устгах
                           </button>
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="md:col-span-2 text-center">
-                      <div className="md:hidden text-sm text-gray-500">Price:</div>
+                      <div className="md:hidden text-sm text-gray-500">Үнэ:</div>
                       ${item.product.price.toFixed(2)}
                     </div>
-                    
+
                     <div className="md:col-span-2 flex items-center justify-center">
-                      <div className="md:hidden text-sm text-gray-500 mr-2">Quantity:</div>
+                      <div className="md:hidden text-sm text-gray-500 mr-2">Тоо:</div>
                       <div className="flex items-center">
                         <Button
                           variant="outline"
@@ -141,9 +137,9 @@ const Cart = () => {
                         </Button>
                       </div>
                     </div>
-                    
+
                     <div className="md:col-span-2 flex items-center justify-between md:justify-center">
-                      <div className="md:hidden text-sm text-gray-500">Total:</div>
+                      <div className="md:hidden text-sm text-gray-500">Нийт:</div>
                       <div className="flex items-center">
                         <span className="font-medium">
                           ${(item.product.price * item.quantity).toFixed(2)}
@@ -160,73 +156,65 @@ const Cart = () => {
                 ))}
               </div>
             </div>
-            
+
             <div className="mt-4 flex justify-between">
-              <Button 
-                variant="outline" 
-                className="text-sm"
-                onClick={() => navigate("/products")}
-              >
-                Continue Shopping
+              <Button variant="outline" className="text-sm" onClick={() => navigate("/products")}>
+                Дэлгүүр хэсэх
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="text-sm text-red-500 border-red-200 hover:bg-red-50"
                 onClick={clearCart}
               >
-                Clear Cart
+                Сагсыг цэвэрлэх
               </Button>
             </div>
           </div>
-          
+
           {/* Order Summary */}
           <div className="lg:w-4/12">
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-bold mb-4">Order Summary</h2>
-              
+              <h2 className="text-xl font-bold mb-4">Захиалгын мэдээлэл</h2>
+
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal</span>
+                  <span className="text-gray-600">Нийлбэр дүн</span>
                   <span>${subtotal.toFixed(2)}</span>
                 </div>
-                
+
                 {discount > 0 && (
                   <div className="flex justify-between text-green-600">
-                    <span>Discount</span>
+                    <span>Хөнгөлөлт</span>
                     <span>-${discount.toFixed(2)}</span>
                   </div>
                 )}
-                
+
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
-                  <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                  <span className="text-gray-600">Хүргэлт</span>
+                  <span>{shipping === 0 ? "Үнэгүй" : `$${shipping.toFixed(2)}`}</span>
                 </div>
-                
+
                 <div className="border-t pt-4 flex justify-between font-bold">
-                  <span>Total</span>
+                  <span>Нийт</span>
                   <span>${total.toFixed(2)}</span>
                 </div>
               </div>
-              
+
               {/* Coupon Code */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Apply Coupon Code
+                  Купон код ашиглах
                 </label>
                 <div className="flex">
                   <input
                     type="text"
                     className="flex-1 border rounded-l-md px-3 py-2"
-                    placeholder="Enter code"
+                    placeholder="Код оруулах"
                     value={couponCode}
                     onChange={(e) => setCouponCode(e.target.value)}
                   />
-                  <Button 
-                    variant="secondary" 
-                    className="rounded-l-none"
-                    onClick={handleApplyCoupon}
-                  >
-                    Apply
+                  <Button variant="secondary" className="rounded-l-none" onClick={handleApplyCoupon}>
+                    Ашиглах
                   </Button>
                 </div>
                 {couponError && (
@@ -236,25 +224,20 @@ const Cart = () => {
                   </div>
                 )}
                 <div className="mt-2 text-xs text-gray-500">
-                  Try code "SUMMER20" for 20% off
+                  "SUMMER20" кодыг туршаад үзээрэй (20% хямдрал)
                 </div>
               </div>
-              
-              <Button 
-                className="w-full bg-shop-primary hover:bg-shop-primary/90 h-12 text-lg"
-                onClick={handleCheckout}
-              >
-                Proceed to Checkout
+
+              <Button className="w-full bg-shop-primary hover:bg-shop-primary/90 h-12 text-lg" onClick={handleCheckout}>
+                Төлбөр төлөх
               </Button>
+
               
-              <div className="mt-4 text-sm text-gray-500 flex items-center justify-center">
-                <span>Secure payment</span>
-              </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </div>
   );

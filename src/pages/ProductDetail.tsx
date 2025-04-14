@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -16,23 +15,19 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useCart();
-  
+
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     if (id) {
-      // In a real app, this would be an API call
       const productId = parseInt(id);
       const foundProduct = getProductById(productId);
-      
+
       if (foundProduct) {
         setProduct(foundProduct);
-        
-        // Get related products from the same category
         const related = PRODUCTS.filter(
           (p) => p.category === foundProduct.category && p.id !== foundProduct.id
         ).slice(0, 4);
-        
         setRelatedProducts(related);
       }
     }
@@ -44,7 +39,7 @@ const ProductDetail = () => {
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-1 flex items-center justify-center">
-          <p>Loading product...</p>
+          <p>Бүтээгдэхүүн ачааллаж байна...</p>
         </div>
         <Footer />
       </div>
@@ -56,11 +51,11 @@ const ProductDetail = () => {
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-1 flex flex-col items-center justify-center p-4">
-          <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
-          <p className="mb-6 text-gray-600">The product you're looking for doesn't exist.</p>
+          <h1 className="text-2xl font-bold mb-4">Бүтээгдэхүүн олдсонгүй</h1>
+          <p className="mb-6 text-gray-600">Хайлтад тохирох бүтээгдэхүүн байхгүй байна.</p>
           <Button onClick={() => navigate("/products")}>
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Products
+            Бүтээгдэхүүнүүд рүү буцах
           </Button>
         </div>
         <Footer />
@@ -82,7 +77,7 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <div className="container mx-auto px-4 py-8 flex-1">
         <Button 
           variant="ghost" 
@@ -90,11 +85,11 @@ const ProductDetail = () => {
           onClick={() => navigate(-1)}
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back
+          Буцах
         </Button>
-        
+
         <div className="flex flex-col md:flex-row gap-8">
-          {/* Product Image */}
+          {/* Зураг */}
           <div className="w-full md:w-1/2">
             <div className="bg-white rounded-lg overflow-hidden">
               <img 
@@ -104,12 +99,12 @@ const ProductDetail = () => {
               />
             </div>
           </div>
-          
-          {/* Product Info */}
+
+          {/* Мэдээлэл */}
           <div className="w-full md:w-1/2">
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
             <p className="text-gray-500 mb-4">{product.category}</p>
-            
+
             <div className="flex items-center space-x-4 mb-6">
               <span className="text-3xl font-bold">${product.price.toFixed(2)}</span>
               {hasDiscount && (
@@ -118,17 +113,17 @@ const ProductDetail = () => {
                     ${product.originalPrice?.toFixed(2)}
                   </span>
                   <span className="bg-shop-accent text-white px-2 py-1 rounded text-sm font-bold">
-                    {discountPercentage}% OFF
+                    {discountPercentage}% хямдрал
                   </span>
                 </>
               )}
             </div>
-            
+
             <p className="text-gray-700 mb-6">{product.description}</p>
-            
+
             <div className="mb-6">
               <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-2">
-                Quantity
+                Тоо ширхэг
               </label>
               <div className="flex items-center">
                 <Button
@@ -157,39 +152,39 @@ const ProductDetail = () => {
                 </Button>
               </div>
             </div>
-            
+
             <Button 
               className="w-full mb-4 bg-shop-primary hover:bg-shop-primary/90 h-12 text-lg"
               onClick={handleAddToCart}
             >
               <ShoppingCart className="h-5 w-5 mr-2" />
-              Add to Cart
+              Сагсанд нэмэх
             </Button>
-            
+
             <div className="border-t border-gray-200 pt-6 space-y-4">
               <div className="flex items-start">
                 <Truck className="h-5 w-5 mr-3 text-gray-600" />
                 <div>
-                  <h3 className="font-medium">Free Shipping</h3>
-                  <p className="text-sm text-gray-500">On orders over $50</p>
+                  <h3 className="font-medium">Үнэгүй хүргэлт</h3>
+                  <p className="text-sm text-gray-500">$50-аас дээш захиалгад</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <Shield className="h-5 w-5 mr-3 text-gray-600" />
                 <div>
-                  <h3 className="font-medium">Secure Payment</h3>
-                  <p className="text-sm text-gray-500">100% secure payment</p>
+                  <h3 className="font-medium">Аюулгүй төлбөр</h3>
+                  <p className="text-sm text-gray-500">100% найдвартай төлбөр</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Related Products */}
+
+        {/* Холбоотой бүтээгдэхүүнүүд */}
         {relatedProducts.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-2xl font-bold mb-6">Related Products</h2>
+            <h2 className="text-2xl font-bold mb-6">Холбоотой бүтээгдэхүүнүүд</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {relatedProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
@@ -198,7 +193,7 @@ const ProductDetail = () => {
           </div>
         )}
       </div>
-      
+
       <Footer />
     </div>
   );
