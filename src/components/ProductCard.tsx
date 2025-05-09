@@ -1,6 +1,10 @@
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { Product, useCart } from "@/context/CartContext";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -11,9 +15,13 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCart();
-  const hasDiscount = product.originalPrice && product.originalPrice > product.price;
+  const hasDiscount =
+    product.originalPrice && product.originalPrice > product.price;
   const discountPercentage = hasDiscount
-    ? Math.round(((product.originalPrice! - product.price) / product.originalPrice!) * 100)
+    ? Math.round(
+        ((product.originalPrice! - product.price) / product.originalPrice!) *
+          100
+      )
     : 0;
 
   return (
@@ -38,10 +46,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </Link>
       <CardContent className="p-4 pt-2">
         <div className="flex items-center space-x-2">
-          <span className="font-bold text-lg">${product.price.toFixed(2)}</span>
+          <span className="font-bold text-lg">{product.price}₮</span>
           {hasDiscount && (
             <span className="text-gray-400 line-through text-sm">
-              ${product.originalPrice?.toFixed(2)}
+              {product.originalPrice}₮
             </span>
           )}
         </div>

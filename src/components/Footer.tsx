@@ -9,57 +9,9 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-gray-800 mb-4">ShopNow</h3>
             <p className="text-gray-600 mb-4">
-              Таны худалдан авалтын бүх хэрэгцээг хангах хамгийн сайн хямдралтай дэлгүүр.
+              Таны худалдан авалтын бүх хэрэгцээг хангах хамгийн сайн хямдралтай
+              дэлгүүр.
             </p>
-          </div>
-
-          {/* Түргэн холбоосууд */}
-          <div>
-            <h3 className="font-bold text-gray-800 mb-4">Түргэн холбоосууд</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-600 hover:text-shop-primary">
-                  Нүүр хуудас
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-gray-600 hover:text-shop-primary">
-                  Бүтээгдэхүүнүүд
-                </Link>
-              </li>
-              <li>
-                <Link to="/deals" className="text-gray-600 hover:text-shop-primary">
-                  Хямдрал
-                </Link>
-              </li>
-              <li>
-                <Link to="/cart" className="text-gray-600 hover:text-shop-primary">
-                  Сагс
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Төрөл бүрийн аккаунт */}
-          <div>
-            <h3 className="font-bold text-gray-800 mb-4">Таны аккаунт</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/login" className="text-gray-600 hover:text-shop-primary">
-                  Нэвтрэх
-                </Link>
-              </li>
-              <li>
-                <Link to="/register" className="text-gray-600 hover:text-shop-primary">
-                  Бүртгүүлэх
-                </Link>
-              </li>
-              <li>
-                <Link to="/orders" className="text-gray-600 hover:text-shop-primary">
-                  Захиалгууд
-                </Link>
-              </li>
-            </ul>
           </div>
 
           {/* Холбоо барих */}
@@ -72,8 +24,6 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-
-        
       </div>
     </footer>
   );

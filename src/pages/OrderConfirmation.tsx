@@ -6,7 +6,9 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 
 const OrderConfirmation = () => {
   // Санамсаргүй захиалгын дугаар үүсгэнэ
-  const orderNumber = Math.floor(Math.random() * 1000000).toString().padStart(6, "0");
+  const orderNumber = Math.floor(Math.random() * 1000000)
+    .toString()
+    .padStart(6, "0");
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -18,7 +20,8 @@ const OrderConfirmation = () => {
 
           <h1 className="text-3xl font-bold mb-2">Захиалга амжилттай!</h1>
           <p className="text-gray-600 mb-6">
-            Худалдан авалт хийсэн танд баярлалаа. Таны захиалгыг хүлээн авсан бөгөөд боловсруулагдаж байна.
+            Худалдан авалт хийсэн танд баярлалаа. Таны захиалгыг хүлээн авсан
+            бөгөөд боловсруулагдаж байна.
           </p>
 
           <div className="bg-gray-50 rounded-lg p-6 mb-6">
@@ -29,7 +32,9 @@ const OrderConfirmation = () => {
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Захиалсан огноо:</span>
-              <span className="font-medium">{new Date().toLocaleDateString()}</span>
+              <span className="font-medium">
+                {new Date().toLocaleDateString()}
+              </span>
             </div>
           </div>
 
@@ -39,15 +44,7 @@ const OrderConfirmation = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/products">
-              <Button variant="outline">
-                Худалдан авалтаа үргэлжлүүлэх
-              </Button>
-            </Link>
-            <Link to="/orders">
-              <Button className="bg-shop-primary hover:bg-shop-primary/90">
-                Миний захиалгууд
-                <ArrowRight className="h-4 w-4 ml-2" />
-              </Button>
+              <Button variant="outline">Худалдан авалтаа үргэлжлүүлэх</Button>
             </Link>
           </div>
         </div>
